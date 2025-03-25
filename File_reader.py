@@ -39,10 +39,16 @@ def read_log(stream):
     return log_entries
 
 
-def main():
+def log_first_100k():
     with open('http_first_100k.log', 'r') as log_file:
-        for log_entry in read_log(log_file):
-            print(log_entry)
+        return read_log(log_file)
+
+def main():
+    log = log_first_100k()
+
+    for line in log:
+        print(line)
+
 
 if __name__ == '__main__':
     main()
