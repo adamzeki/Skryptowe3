@@ -2,7 +2,6 @@ import datetime
 import ipaddress
 import sys
 from sys import dont_write_bytecode
-from collections import namedtuple
 
 
 def parse_log_line(line):
@@ -18,13 +17,11 @@ def parse_log_line(line):
         method = parsed_line[7]
         host = ipaddress.ip_address(parsed_line[8])
         uri = parsed_line[9]
-        stat_code = parsed_line[14]
+        stat_code = int(parsed_line[14])
 
         timestamp = datetime.datetime.fromtimestamp(ts)
 
-        Log_line = namedtuple('Log_line', ['ts', 'uid', 'id_orig_h', 'id_oirg_p', 'id_resp_h', 'id_resp_p', 'method', 'host', 'uri', 'stat_code'])
-
-        return Log_line(timestamp, uid, id_orig_h, id_orig_p, id_resp_h,id_resp_p, method, host, uri, stat_code)
+        return timestamp, uid, id_orig_h, id_orig_p, id_resp_h,id_resp_p, method, host, uri, stat_code
 
     except ValueError:
         return None
