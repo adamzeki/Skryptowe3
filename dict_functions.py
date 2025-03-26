@@ -44,8 +44,7 @@ def print_dict_entry_dates(dict_log):
             print(f"{meth} - {round(ret_dict[host]['meth_dict'][meth]/ret_dict[host]['req_count']*100, 2)}%")
         print(f"2xx ratio: {round(ret_dict[host]['2xx_count']/ret_dict[host]['req_count'], 4)}\n")
 
-
-
+        
 def test_entry_to_dict():
     log = log_first_100k()
     log_entry_dict = entry_to_dict(log[7])
