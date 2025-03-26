@@ -19,6 +19,20 @@ def log_to_dict(log):
 
     return log_dict
 
+def print_dict_entry_dates(dict_log):
+    ret_dict = {}
+    for key in dict_log: #wrong, dict_log stores lists of dictionaries
+        dict_entry = dict_log[key]
+        is_2xx = 1 if 99<dict_entry[9]<1000 and int(dict_entry[9]/100)==2 else 0
+        if dict_entry not in ret_dict:
+            ret_dict[dict_entry] = (1, dict_entry[0], dict_entry[0], {dict_entry[6]: 1}, is_2xx)
+        else:
+            ret_dict[dict_entry][0]+=1
+            if ret_dict[dict_entry][1]
+
+    for key in ret_dict:
+        print()
+
 def test_entry_to_dict():
     log = log_first_100k()
     log_entry_dict = entry_to_dict(log[7])
