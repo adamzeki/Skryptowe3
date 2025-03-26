@@ -71,6 +71,14 @@ def test_get_failed_reads():
         for entry in result:
             print(entry)
 
+def get_entries_by_extension(log, extension):
+    return [entry for entry in log if entry[8].endswith(extension)]
+
+def test_get_entries_by_extension():
+    log_data = log_first_100k()
+    filtered_log = get_entries_by_extension(log_data, '.jpg')
+    for entry in filtered_log:
+        print(entry)
 
 if __name__ == '__main__':
-    test_get_failed_reads()
+    test_get_entries_by_extension()
